@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background: lightgrey;
+}
+.cardheader  {
+    background: lightpink;
+    border: 0.07em solid lightslategray;
+}
+.col-6  {
+    background: lightcyan;
+    border: 0.07em solid lightslategray;
+}
+#counter  {
+    background: lightpink;
+    height: 8em;
+    border: 0.07em solid lightslategray;
+}
+#stats  {
+    background: lightcyan;
+    height: 8em;
+    border: 0.07em solid lightslategray;
+}
+#crystal1  {
+    background: white;
+    height:4em;
+    border: 0.07em solid lightslategray;
+}
+#crystal2 {
+    background: white;
+    height: 4em;
+    border: 0.07em solid lightslategray;    
+}
+#crystal3{
+    background:white;
+    height:4em;
+    border: 0.07em solid lightslategray;    
+}
+#crystal4 {
+    background: white;
+    height: 4em;
+    border: 0.07em solid lightslategray;    
+}
+h6 {
+    background:lightpink;
+    border: 0.07em solid lightslategray;
+}
+#totalScore {
+    background: lightcyan;
+    height: 8em;
+    border: 0.07em solid lightslategray;
+}

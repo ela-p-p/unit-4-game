@@ -31,26 +31,29 @@
     </div>
 
     <div class = "row">
-        <div class = "col-2" id = "randomNumber"></div>
-        <div class = "col-1" id = "stats"><br>
-            <id = "wins">Wins:</id><br>
-            <id = "losses">Losses:</id>
+        <div class = "col-1" id = "randomNumber"></div>
+
+        <div class = "col-2" id = "stats">
+            <h7>Wins = </h7><div id = "wins"></div>
+            <h7>Losses = </h7><div id = "losses"></div>
         </div>
     </div>
 
     <div class = "row" id = "crystals">
         <div class = "col-1" id = "crystal1">
             <img class="rounded mx-auto d-block" src="assets/images/orange.jpg" alt="1">
-        </div>
+            </div>
         <div class = "col-1" id = "crystal2">
-                <img class="rounded mx-auto d-block" src="assets/images/green.jpg" alt="2">
-        </div>
+            <img class="rounded mx-auto d-block" src="assets/images/green.jpg" alt="2">
+            </div>
         <div class = "col-1" id = "crystal3">
-                <img class="rounded mx-auto d-block" src="assets/images/blue.jpg" alt="3">
-        </div>
+            <img class="rounded mx-auto d-block" src="assets/images/blue.jpg" alt="3">
+            </div>
         <div class = "col-1" id = "crystal4">
-        <img class="rounded mx-auto d-block" src="assets/images/red.jpg" alt="4"></div>            
-    </div></div>
+            <img class="rounded mx-auto d-block" src="assets/images/red.jpg" alt="4">
+            </div>            
+    </div>
+    
 
     <div class = "row">
         <div class = "col-2" id = "totalScoreHeader"><h6>You're Total Score is:</h6></div>
@@ -75,41 +78,43 @@ $(document).ready(function( $ ) {
         
     function randomCrystal(){
         var random2 = Math.floor(Math.random() * 12) + 1;
-        console.log(random2);         
-    }
-    randomCrystal()
-    
-    
-    //random number per crystal
-    
-    // var numberOptions = [10, 5, 3, 7];    
-    var counter = 0; 
-    numImages = $("img");   
-    for (var i = 0; i < numImages.length; i++){
-        var crystals = $(".rounded")
-        newCrystals = crystals.attr("data-value", randomCrystal(), {
-       
-    }); crystals.append(newCrystals);
-    }
-
-    crystals.on("click", crystals, function() {
+        return random2;      
+    }  
+        
+    var crystals = $(".rounded").each(function (index, elem) {
+        var val = randomCrystal()
+        $(elem).attr('data-value', randomCrystal())
+    });       
+        
+    var counter = 0;
+    var wins = 0;
+    var losses = 0;
+    $("#totalScore").text(counter);
+    $("#wins").text(wins);        
+    $("#losses").text(losses);            
+   
+    crystals.on("click", crystals, function() {        
         var crystalValue = ($(this).attr("data-value"));
         crystalValue = parseInt(crystalValue);
-        
         counter += crystalValue;
-
-        alert("New score: " + counter);
-
+        $("#totalScore").text(counter);
+                        
         if (counter === random) {
-        alert("You win!");
+            wins += 1; 
+            $("#wins").text(wins);
+            alert("You WIN!");
+            //stop click
+            //reset game
         }
 
-        else if (counter >= random) {
-        alert("You lose!!");
-        }
-
+        else if (counter > random) {
+            losses += 1;
+            $("#losses").text(losses); 
+            alert("You LOSE!")        
+        } // stop click
+        // reset game
     });
-
+    
 
 
 

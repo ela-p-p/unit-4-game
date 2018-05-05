@@ -51,6 +51,12 @@ h6 {
 }
 #totalScore {
     background: lightcyan;
-    height: 8em;
+    height: 7em;
     border: 0.07em solid lightslategray;
+}
+
+#win-lose {
+    background: lightcyan;
+    text-align: right;
+    font-family: fantasy;
 }

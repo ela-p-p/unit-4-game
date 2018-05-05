@@ -28,6 +28,7 @@
             <pr>Each time the game starts, the values of the crystals will change as well.</pr>
             <br>
         </div>
+        
     </div>
 
     <div class = "row">
@@ -37,6 +38,10 @@
             <h7>Wins = </h7><div id = "wins"></div>
             <h7>Losses = </h7><div id = "losses"></div>
         </div>
+        <div class = "col-2"><button type="button" id = "reset" class="btn btn-outline-primary btn-lg">Replay</button></div>
+        <div class = "col-3" id = "win-lose"></div>
+        <div class = "col-1"></div>
+        
     </div>
 
     <div class = "row" id = "crystals">
@@ -58,70 +63,84 @@
     <div class = "row">
         <div class = "col-2" id = "totalScoreHeader"><h6>You're Total Score is:</h6></div>
     </div>
-
+    
     <div class = "row">
         <div class = "col-3" id = "totalScore"></div>
+        <div class = "col-1"></div>   
     </div>
    
 </div>
 
-<script type = "text/javascript">
-// <!-- src="assets/javascript/game.js"> -->
-$(document).ready(function( $ ) {
-    // $(".container").get(function() {
-//start game
 
-    var random = Math.floor(Math.random() * 102) + 19;
-    $("#randomNumber").text(random);
-    //random number for guess
-     
+<script type = "text/javascript">
+
+// <!-- src="assets/javascript/game.js"> -->
+
+$(document).ready(function( $ ) {
+
+    var gameStart = randomNum()
         
+    function randomNum(){
+        var random = Math.floor(Math.random() * 102) + 19;
+        $("#randomNumber").text(random); 
+        return random
+    }
+                  
+           
     function randomCrystal(){
         var random2 = Math.floor(Math.random() * 12) + 1;
         return random2;      
     }  
         
-    var crystals = $(".rounded").each(function (index, elem) {
-        var val = randomCrystal()
-        $(elem).attr('data-value', randomCrystal())
-    });       
+        var crystals = $(".rounded").each(function (index, elem) {
+            var val = randomCrystal()
+            $(elem).attr('data-value', randomCrystal())
+        });       
         
-    var counter = 0;
-    var wins = 0;
-    var losses = 0;
-    $("#totalScore").text(counter);
-    $("#wins").text(wins);        
-    $("#losses").text(losses);            
-   
-    crystals.on("click", crystals, function() {        
-        var crystalValue = ($(this).attr("data-value"));
-        crystalValue = parseInt(crystalValue);
-        counter += crystalValue;
+        var counter = 0;
+        var wins = 0;
+        var losses = 0;
         $("#totalScore").text(counter);
+        $("#wins").text(wins);        
+        $("#losses").text(losses);            
+        
+        $("#reset").on("click", function() { 
+            randomNum()
+            counter = 0 
+            $("#totalScore").text(counter);      
+         });
+   
+        crystals.on("click", crystals, function() {        
+            var crystalValue = ($(this).attr("data-value"));
+            crystalValue = parseInt(crystalValue);
+            counter += crystalValue;
+            $("#totalScore").text(counter);
                         
-        if (counter === random) {
-            wins += 1; 
-            $("#wins").text(wins);
-            alert("You WIN!");
-            //stop click
-            //reset game
-        }
+            if (counter === gameStart) {
+                // $(this).preventDefault();
+                wins += 1; 
+                $("#wins").text(wins);
+                var windowTimeout = setTimeout(function() {
+                    $("#win-lose").append("<h1>Winner!<h1>");
+                        }, 500);
+            }
 
-        else if (counter > random) {
-            losses += 1;
-            $("#losses").text(losses); 
-            alert("You LOSE!")        
-        } // stop click
-        // reset game
-    });
-    
+            else if (counter > gameStart) {
+                // $(this).preventDefault();
+                losses += 1;
+                $("#losses").text(losses);
+                var windowTimeout = setTimeout(function() {
+                    $("#win-lose").append("<h1>Loser!<h1>"); 
+                        }, 500);
+            } 
 
+            
+        
+    });//crsytals.on(click)  container
 
-
-
-//  });  end of container to start game
 
 }); //end doc ready
+
 </script>    
 </body>
 </html>

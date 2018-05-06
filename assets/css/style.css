@@ -6,57 +6,82 @@ body {
 }
 .cardheader  {
     background: lightpink;
-    border: 0.07em solid lightslategray;
+    border: 0.04em solid lightslategray;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 0.2em;
 }
 .col-6  {
     background: lightcyan;
-    border: 0.07em solid lightslategray;
+    border: 0.04em solid lightslategray;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0.2em;
 }
 #randomNumber  {
     background: lightpink;
-    height: 8em;
-    border: 0.07em solid lightslategray;
+    height: 3em;
+    border: 0.04em solid lightslategray;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
 }
 #stats  {
     background: lightcyan;
-    height: 8em;
-    border: 0.07em solid lightslategray;
-    width: 20em;
+    height: 6em;
+    border: 0.04em solid lightslategray;
+    width: 8em;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5em;
+    margin-bottom: 0.2em;
 }
 
 
 #crystal1  {
     background: white;
     height:4em;
-    border: 0.07em solid lightslategray;
+    border: 0.04em solid lightslategray;
 }
 #crystal2 {
     background: white;
     height: 4em;
-    border: 0.07em solid lightslategray;    
+    border: 0.04em solid lightslategray;    
 }
 #crystal3{
     background:white;
     height:4em;
-    border: 0.07em solid lightslategray;    
+    border: 0.04em solid lightslategray;    
 }
 #crystal4 {
     background: white;
     height: 4em;
-    border: 0.07em solid lightslategray;    
+    border: 0.04em solid lightslategray;    
+}
+#reset{
+    padding: 0.5em;
+    margin-top: 1em;
+    margin-left: 1em;
+    font-family: 'Courier New', Courier, monospace;
+
+
 }
 h6 {
-    background:lightpink;
-    border: 0.07em solid lightslategray;
+    margin-top: 1em;
+    margin-left: -1em;
+    margin-bottom: -0.2em;
+    background: white;
+    padding: 0.5em;
+    /* border: 0.07em solid lightslategray; */
+    font-family: 'Courier New', Courier, monospace;
 }
 #totalScore {
-    background: lightcyan;
-    height: 7em;
-    border: 0.07em solid lightslategray;
+   
+    background: white;
+    height: 2em;
+    /* border: 0.07em solid lightslategray; */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+    
 }
 
 #win-lose {
-    background: lightcyan;
     text-align: right;
-    font-family: fantasy;
+    font-family: 'Courier New', Courier, monospace;
 }

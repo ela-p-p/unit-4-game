@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -21,7 +21,7 @@
 
     <div class = "row">
         <div class = "col-6">
-            <p> You will be given a random number at the start of the game</p>
+            <p> You will be given a random number at the start of the game.</p>
             <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your score.</p>
             <p>You win the game by matching your score to a random number, you lose the game if your score goes above the random number.</p>
             <p>The value of each crystal is hidden from you until you click on it.</p>
@@ -35,10 +35,10 @@
         <div class = "col-1" id = "randomNumber"></div>
 
         <div class = "col-2" id = "stats">
-            <h7>Wins = </h7><div id = "wins"></div>
-            <h7>Losses = </h7><div id = "losses"></div>
+            <h7>Wins = </h7><span id = "wins"></span><br>
+            <h7>Losses = </h7><span id = "losses"></span>
         </div>
-        <div class = "col-2"><button type="button" id = "reset" class="btn btn-outline-primary btn-lg">Replay</button></div>
+        
         <div class = "col-3" id = "win-lose"></div>
         <div class = "col-1"></div>
         
@@ -61,86 +61,16 @@
     
 
     <div class = "row">
-        <div class = "col-2" id = "totalScoreHeader"><h6>You're Total Score is:</h6></div>
+        <div class = "col-3" id = "totalScoreHeader"><h6>You're Total Score is:</h6></div>
     </div>
     
     <div class = "row">
-        <div class = "col-3" id = "totalScore"></div>
-        <div class = "col-1"></div>   
+        <div class = "col-1" id = "totalScore"></div>
+        <div class = "col-2"><button type="button" id = "reset" class="btn btn-primary btn-md">Replay</button></div>  
     </div>
    
 </div>
 
-
-<script type = "text/javascript">
-
-// <!-- src="assets/javascript/game.js"> -->
-
-$(document).ready(function( $ ) {
-
-    var gameStart = randomNum()
-        
-    function randomNum(){
-        var random = Math.floor(Math.random() * 102) + 19;
-        $("#randomNumber").text(random); 
-        return random
-    }
-                  
-           
-    function randomCrystal(){
-        var random2 = Math.floor(Math.random() * 12) + 1;
-        return random2;      
-    }  
-        
-        var crystals = $(".rounded").each(function (index, elem) {
-            var val = randomCrystal()
-            $(elem).attr('data-value', randomCrystal())
-        });       
-        
-        var counter = 0;
-        var wins = 0;
-        var losses = 0;
-        $("#totalScore").text(counter);
-        $("#wins").text(wins);        
-        $("#losses").text(losses);            
-        
-        $("#reset").on("click", function() { 
-            randomNum()
-            counter = 0 
-            $("#totalScore").text(counter);      
-         });
-   
-        crystals.on("click", crystals, function() {        
-            var crystalValue = ($(this).attr("data-value"));
-            crystalValue = parseInt(crystalValue);
-            counter += crystalValue;
-            $("#totalScore").text(counter);
-                        
-            if (counter === gameStart) {
-                // $(this).preventDefault();
-                wins += 1; 
-                $("#wins").text(wins);
-                var windowTimeout = setTimeout(function() {
-                    $("#win-lose").append("<h1>Winner!<h1>");
-                        }, 500);
-            }
-
-            else if (counter > gameStart) {
-                // $(this).preventDefault();
-                losses += 1;
-                $("#losses").text(losses);
-                var windowTimeout = setTimeout(function() {
-                    $("#win-lose").append("<h1>Loser!<h1>"); 
-                        }, 500);
-            } 
-
-            
-        
-    });//crsytals.on(click)  container
-
-
-}); //end doc ready
-
-</script>    
+<script type="text/javascript" src="assets/javascript/game.js"></script>   
 </body>
 </html>
